@@ -1,0 +1,133 @@
+<TrainPage>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: 0.828, 0.917, 0.972, 1  # Set the background color (r, g, b, a)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 100
+            padding: 10
+            spacing: 10
+
+            canvas.before:
+                Color:
+                    rgba: 0, 0.382, 0.597, 1  # Set the background color for the header
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            BoxLayout:
+                orientation: 'horizontal'
+                halign: 'center'
+                valign: 'middle'
+                padding: 60, 0
+                spacing: 30
+
+                Image:
+                    source: 'img.png'
+                    size_hint: None, None
+                    size: 70, 70
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+                Label:
+                    text: '[b]SISTEM KLASIFIKASI TANAMAN OBAT BERDASARKAN CITRA DAUN METODE FUZZY KNN[/b]'
+                    font_size: 30
+                    color: 1,1,1, 1  # Text color white
+                    markup: True
+                    valign: 'middle'
+                    text_size: self.size
+
+        Widget:
+            height: 10
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 40
+            spacing: 5
+            size_hint: None, None
+            pos_hint: {'center_x': 0.5}
+            width: self.minimum_width
+            height: self.minimum_height
+
+            Label:
+                text: 'Train Menu'
+                font_size: 40
+                color: 0, 0, 0, 1
+                pos_hint: {'center_x': 0.5}
+
+            Widget:
+                size_hint_y: None
+                height: 50
+
+            Button:
+                text: 'Input'
+                size_hint: None, None
+                size: 150, 40
+                pos_hint: {'center_x': 0.5}
+                background_color: 0.2, 0.6, 0.8, 1
+                on_release: root.select_folder()
+
+            Widget:
+                size_hint_y: None
+                height: 5
+
+            Label:
+                id: folder_path
+                text: 'Menunggu folder input'
+                color: 0, 0, 0, 1
+                pos_hint: {'center_x': 0.5}
+
+            Widget:
+                size_hint_y: None
+                height: 40
+
+            Label:
+                text: 'Nilai K'
+                color: 0, 0, 0, 1
+                pos_hint: {'center_x': 0.5}
+
+            Widget:
+                size_hint_y: None
+                height: 5
+
+            TextInput:
+                id: input_box
+                hint_text: 'Type here'
+                size_hint: None, None
+                size: 200, 40
+                pos_hint: {'center_x': 0.5}
+                multiline: False
+
+            Widget:
+                size_hint_y: None
+                height: 10
+
+            Button:
+                text: 'Train'
+                size_hint: None, None
+                size: 150, 40
+                pos_hint: {'center_x': 0.5}
+                background_color: 0.2, 0.3, 0.9, 1
+                on_release: root.train()
+
+            Widget:
+                size_hint_y: None
+                height: 10
+
+            Button:
+                text: 'Test Page'
+                size_hint: None, None
+                size: 150, 40
+                pos_hint: {'center_x': 0.5}
+                background_color: 0.2, 0.3, 0.9, 1
+                on_release: app.change_test_page()
+
+            Widget:
+                size_hint_y: None
+                height: 80

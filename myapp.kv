@@ -1,0 +1,33 @@
+# main.kv
+
+<FolderSelectPopup>:
+    title: 'Select Folder'
+    size_hint: 0.9, 0.9
+
+    FileChooserListView:
+        id: file_chooser
+        path: '/'
+        on_selection: root.folder_selected(self.selection)
+
+<MyApp>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        Label:
+            id: folder_label
+            text: "Selected Folder: None"
+
+        Button:
+            text: "Select Folder"
+            on_release: app.show_folder_select_popup()
+
+<FolderSelectPopup>:
+    BoxLayout:
+        orientation: 'vertical'
+        FileChooserListView:
+            id: file_chooser
+            path: '/'
+            on_submit: root.folder_selected(file_chooser.path)
+
